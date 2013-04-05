@@ -5,7 +5,7 @@
 
 namespace XmlIterator;
 
-class XmlIterator extends \php_user_filter implements \Iterator
+class XmlIterator implements \Iterator
 {
     /**
      * @var int
@@ -82,7 +82,8 @@ class XmlIterator extends \php_user_filter implements \Iterator
         $this->doc    = new \DOMDocument();
 
         if ($this->options["utf8Filter"]) {
-            stream_filter_register('xmlutf8', __CLASS__);
+            require_once "Utf8Filter.php";
+            stream_filter_register('xmlutf8', __NAMESPACE__ . "\\Utf8Filter");
         }
     }
 
@@ -156,30 +157,5 @@ class XmlIterator extends \php_user_filter implements \Iterator
         while ($this->reader->read() && $this->reader->name !== $this->delimiterTagName) {
             // intentionally empty
         }
-    }
-
-    /**
-     * @param $in
-     * @param $out
-     * @param $consumed
-     * @param $closing
-     *
-     * @return int|void
-     *
-     * @link http://stackoverflow.com/a/3466609/372654
-     */
-    function filter($in, $out, &$consumed, $closing)
-    {
-        while ($bucket = stream_bucket_make_writeable($in)) {
-            $bucket->data = preg_replace(
-                '/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u',
-                '',
-                $bucket->data
-            );
-            $consumed += $bucket->datalen;
-            stream_bucket_append($out, $bucket);
-        }
-
-        return PSFS_PASS_ON;
     }
 }

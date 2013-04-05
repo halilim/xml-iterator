@@ -46,7 +46,7 @@ switch ($argv[3]) {
         $it = new XmlIterator\XmlIterator($url, $elemTagName);
         foreach ($it as $k => $v) {
             $ct++;
-            echo $k . " => " . var_export($v, true) . "\n\n";
+//            echo $k . " => " . var_export($v, true) . "\n\n";
         }
         break;
 
