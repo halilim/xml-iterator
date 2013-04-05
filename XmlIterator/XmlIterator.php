@@ -73,10 +73,9 @@ class XmlIterator implements \Iterator
         $this->xmlFileUri       = $xmlFileUri;
         $this->delimiterTagName = $delimiterTagName;
 
-        if (empty($options["readerOptions"])) {
-            $options["readerOptions"] = \XMLReader::VALIDATE | \XMLReader::SUBST_ENTITIES;
-        }
-        $this->options = array_replace_recursive($this->options, $options);
+        // work-around for non-scalar default value
+        $this->options["readerOptions"] = \XMLReader::VALIDATE | \XMLReader::SUBST_ENTITIES;
+        $this->options                  = array_replace_recursive($this->options, $options);
 
         $this->reader = new \XMLReader();
         $this->doc    = new \DOMDocument();
