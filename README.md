@@ -4,12 +4,29 @@ simple-xml-iterator
 XML Reader to array/object iterator with low memory usage and an acceptable level of ease of use.
 Mostly useful for importing sequential data from external API's.
 
-Installation (todo: add composer support) :
-
-    require_once "SimpleXmlIterator/XmlIterator.php";
+Note: This is currently alpha/development stage, see todo below.
 
 
-Usage:
+Installation
+------------
+
+Add this to your composer.json:
+
+    {
+        "repositories": [
+            {
+                "type": "vcs",
+                "url" : "https://github.com/halilim/simple-xml-iterator.git"
+            }
+        ],
+
+        "require": {
+            "halilim/simple-xml-iterator": "dev-master"
+        }
+    }
+
+Usage
+-----
 
     use SimpleXmlIterator\XmlIterator;
     $it = new XmlIterator("http://api.example.com/products.xml", "product");
@@ -68,3 +85,9 @@ Example output:
         ),
       ),
     )
+
+Todo
+----
+
+* Rename namespace and/or class (esp. the namespace can be confused with PHP SPL's `SimpleXMLIterator`)
+* Submit to packagist after using it for a while.
