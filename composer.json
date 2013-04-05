@@ -18,5 +18,10 @@
         "ext-SPL"      : "*",
         "ext-xmlreader": "*"
     },
+    "autoload"         : {
+        "psr-0": {
+            "SimpleXmlIterator": "."
+        }
+    },
     "minimum-stability": "dev"
 }
