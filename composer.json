@@ -1,0 +1,22 @@
+{
+    "name"             : "halilim/simple-xml-iterator",
+    "type"             : "library",
+    "description"      : "XML Reader to simplexml/array iterator with low memory usage and an acceptable level of ease of use.",
+    "keywords"         : ["XML", "XMLReader", "SimpleXML", "Iterator"],
+    "license"          : "MIT",
+    "authors"          : [
+        {
+            "name" : "Halil Özgür",
+            "email": "halil@ozgur.gmail.com"
+        }
+    ],
+    "require"          : {
+        "php": ">=5.3",
+
+        "ext-dom"      : "*",
+        "ext-SimpleXML": "*",
+        "ext-SPL"      : "*",
+        "ext-xmlreader": "*"
+    },
+    "minimum-stability": "dev"
+}
