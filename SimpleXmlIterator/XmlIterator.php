@@ -89,6 +89,7 @@ class XmlIterator extends \php_user_filter implements \Iterator
     /**
      * Return the current element
      * @link http://php.net/manual/en/iterator.current.php
+     * @link http://stackoverflow.com/a/1835324/372654
      * @return array|\SimpleXMLElement
      */
     public function current()
