@@ -3,7 +3,7 @@
  * @author Halil Özgür | halil · ozgur |o| gmail.com
  */
 
-namespace SimpleXmlIterator;
+namespace XmlIterator;
 
 class XmlIterator extends \php_user_filter implements \Iterator
 {

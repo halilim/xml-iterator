@@ -41,12 +41,12 @@ $method    = "";
 switch ($argv[3]) {
     case 1:
         // V1
-        $method = "SimpleXmlIterator\\XmlIterator";
-        require_once "SimpleXmlIterator/XmlIterator.php";
-        $it = new SimpleXmlIterator\XmlIterator($url, $elemTagName);
+        $method = "XmlIterator\\XmlIterator";
+        require_once "XmlIterator/XmlIterator.php";
+        $it = new XmlIterator\XmlIterator($url, $elemTagName);
         foreach ($it as $k => $v) {
             $ct++;
-//            echo $k . " => " . var_export($v, true) . "\n\n";
+            echo $k . " => " . var_export($v, true) . "\n\n";
         }
         break;
 
