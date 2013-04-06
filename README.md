@@ -38,6 +38,9 @@ foreach ($it as $k => $v) {
 }
 ```
 
+Note: When working with remote files it's advised to copy the file to a temporary local location first. 
+Otherwise if the import takes a long time, "extra content at the end of the document" kind of errors may occur (or at least this was what happened to me).
+
 Example input:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
