@@ -97,7 +97,7 @@ class XmlIterator implements \Iterator
         // convert to array for ease of use
         $current = simplexml_import_dom($this->doc->importNode($this->reader->expand(), true));
         if ($this->options["asArray"]) {
-            return json_decode(json_encode($current), true);
+            return json_decode(json_encode(new \SimpleXMLElement($current->asXML(), LIBXML_NOCDATA)), true);
         } else {
             return $current;
         }
