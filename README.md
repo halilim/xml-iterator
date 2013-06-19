@@ -1,7 +1,7 @@
 xml-iterator
 ============
 
-XML Reader to array/object iterator with low memory usage and an acceptable level of ease of use.
+XML Reader to array/object iterator with low memory usage (basically a Space–time tradeoff) and an acceptable level of ease of use.
 Mostly useful for importing sequential data from external API's.
 
 Note: This is currently alpha/development stage, and see todo below.
