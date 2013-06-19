@@ -1,4 +1,4 @@
-xml-iterator
+xml-iterator [![Build Status](https://travis-ci.org/halilim/xml-iterator.png)](https://travis-ci.org/halilim/xml-iterator)
 ============
 
 XML Reader to array/object iterator with low memory usage (basically a Space–time tradeoff) and an acceptable level of ease of use.
