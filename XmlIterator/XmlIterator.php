@@ -74,7 +74,7 @@ class XmlIterator implements \Iterator
         $this->delimiterTagName = $delimiterTagName;
 
         // work-around for non-scalar default value
-        $this->options["readerOptions"] = \XMLReader::VALIDATE | \XMLReader::SUBST_ENTITIES;
+        $this->options["readerOptions"] = \XMLReader::VALIDATE | \XMLReader::SUBST_ENTITIES | LIBXML_NOCDATA;
         $this->options                  = array_replace_recursive($this->options, $options);
 
         $this->reader = new \XMLReader();
