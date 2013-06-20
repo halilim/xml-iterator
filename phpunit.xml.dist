@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!--bootstrap="tests/bootstrap.php"-->
-<phpunit
-         backupGlobals="false"
+<phpunit backupGlobals="false"
          backupStaticAttributes="false"
          colors="true"
          processIsolation="false">
-     <testsuites>
-         <testsuite name="XmlIterator Test Suite">
-             <directory>./XmlIterator/Tests/</directory>
+    <testsuites>
+        <testsuite name="XmlIterator Test Suite">
+            <directory>./XmlIterator/Tests/</directory>
         </testsuite>
-     </testsuites>
->
+    </testsuites>
 </phpunit>
