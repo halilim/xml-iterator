@@ -4,22 +4,13 @@ xml-iterator [![Build Status](https://travis-ci.org/halilim/xml-iterator.png)](h
 XML Reader to array/object iterator with low memory usage (basically a Space–time tradeoff) and an acceptable level of ease of use.
 Mostly useful for importing sequential data from external API's.
 
-Note: This is currently alpha/development stage, and see todo below.
 
-
-Installation
-------------
+Installation (Composer)
+-----------------------
 
 Add this to your composer.json:
 ```json
 {
-    "repositories": [
-        {
-            "type": "vcs",
-            "url" : "https://github.com/halilim/xml-iterator.git"
-        }
-    ],
-
     "require": {
         "halilim/xml-iterator": "dev-master"
     }
@@ -38,7 +29,7 @@ foreach ($it as $k => $v) {
 }
 ```
 
-Note: When working with remote files it's advised to copy the file to a temporary local location first. 
+Note: When working with remote files it's advised to copy the file to a temporary local location first.
 Otherwise if the import takes a long time, "extra content at the end of the document" kind of errors may occur (or at least this was what happened to me).
 
 Example input:
@@ -97,4 +88,4 @@ Todo
 ----
 
 * ~~Rename namespace and/or class (esp. the namespace can be confused with PHP SPL's `SimpleXMLIterator`)~~
-* Submit to packagist after using it for a while.
+* ~~Submit to packagist after using it for a while.~~
