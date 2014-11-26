@@ -87,15 +87,26 @@ class XmlIterator implements \Iterator
     }
 
     /**
-     * Return the current element
+     * Return the current element, <b>FALSE</b> on error
      * @link http://php.net/manual/en/iterator.current.php
      * @link http://stackoverflow.com/a/1835324/372654
-     * @return array|\SimpleXMLElement
+     * @return false|array|\SimpleXMLElement
      */
     public function current()
     {
-        // convert to array for ease of use
-        $current = simplexml_import_dom($this->doc->importNode($this->reader->expand(), true));
+        $node = $this->reader->expand();
+        if ($node === false) {
+            return false;
+        }
+        $node = $this->doc->importNode($node, true);
+        if ($node === false) {
+            return false;
+        }
+        $current = simplexml_import_dom($node);
+        if ($current === false) {
+            return false;
+        }
+
         if ($this->options["asArray"]) {
             return json_decode(json_encode($current), true);
         } else {
