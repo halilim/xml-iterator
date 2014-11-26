@@ -94,17 +94,23 @@ class XmlIterator implements \Iterator
      */
     public function current()
     {
-        // convert to array for ease of use
-        $node = $this->doc->importNode($this->reader->expand(), true);
-        if (false === $node) {
+        $node = $this->reader->expand();
+        if ($node === false) {
             return false;
+        }
+        $node = $this->doc->importNode($node, true);
+        if ($node === false) {
+            return false;
+        }
+        $current = simplexml_import_dom($node);
+        if ($current === false) {
+            return false;
+        }
+
+        if ($this->options["asArray"]) {
+            return json_decode(json_encode($current), true);
         } else {
-            $current = simplexml_import_dom($node);
-            if ($this->options["asArray"]) {
-                return json_decode(json_encode($current), true);
-            } else {
-                return $current;
-            }
+            return $current;
         }
     }
 
