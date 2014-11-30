@@ -84,8 +84,21 @@ Example output:
 )
 ```
 
-Todo
-----
+Contributing
+------------
+1. Fork
+2. Clone your fork
+3. Create a topic branch
+4. Make changes
+5. Add tests if possible
+6. Make sure all tests are successful
+7. If you are adding new functionality, document it in README.md
+8. Do not change the version number
+9. If necessary, rebase your commits into logical chunks, without errors
+10. If there are changes in the upstream, rebase against it
+11. Push your branch
+12. Send a pull request for your branch
 
-* ~~Rename namespace and/or class (esp. the namespace can be confused with PHP SPL's `SimpleXMLIterator`)~~
-* ~~Submit to packagist after using it for a while.~~
+Notes
+-----
+* Tries to use [semantic versioning](http://semver.org/) whenever possible.
