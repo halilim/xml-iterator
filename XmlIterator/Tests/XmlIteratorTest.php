@@ -1,7 +1,4 @@
 <?php
-/**
- * @author Halil Özgür | halil · ozgur |o| gmail.com
- */
 
 namespace XmlIterator\Tests;
 

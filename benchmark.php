@@ -1,7 +1,5 @@
 <?php
 /**
- * @author Halil Özgür | halil · ozgur |o| gmail.com
- *
  * Usage: php benchmark.php <FILE_URI/PATH> <DELIMITER_TAG> <METHOD>, e.g.:
  *   php benchmark.php example.xml product 1
  *   php benchmark.php http://www.example.com/example.xml product 2
