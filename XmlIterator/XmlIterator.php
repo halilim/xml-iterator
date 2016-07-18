@@ -105,10 +105,10 @@ class XmlIterator implements \Iterator
         }
 
         if ($this->options["asArray"]) {
-            return json_decode(json_encode($current), true);
-        } else {
-            return $current;
+            return (array) $current;
         }
+
+        return $current;
     }
 
     /**
