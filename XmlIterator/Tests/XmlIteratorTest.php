@@ -31,6 +31,11 @@ class XmlIteratorTest extends \PHPUnit_Framework_TestCase
                 case 1:
                     $this->assertInternalType("array", $node, "can convert nodes to array");
                     $this->assertEquals("Lorem", $node["title"], "can strip invalid characters");
+                    $this->assertInternalType(
+                        "array",
+                        $node["images"],
+                        "converts deep objects to nested arrays"
+                    );
                     break;
 
                 case 2:
