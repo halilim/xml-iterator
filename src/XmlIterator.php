@@ -28,7 +28,7 @@ class XmlIterator implements Iterator
         /**
          * @var string Encoding of source file
          */
-        "encoding" => null,
+        "encoding"      => null,
 
         /**
          * @var null See __construct() for the default
@@ -40,14 +40,14 @@ class XmlIterator implements Iterator
          *
          * Disable for performance gain if you know that the xml is clean of bad characters.
          */
-        "utf8Filter" => true,
+        "utf8Filter"    => true,
 
         /**
          * @var bool Return current element as an array for ease of use?
          *
          * Disable for performance gain. Bu you need to do (string)$current->something for each sub-element.
          */
-        "asArray" => true,
+        "asArray"       => true,
     );
 
     /**
@@ -158,11 +158,17 @@ class XmlIterator implements Iterator
     public function rewind()
     {
         $uri = $this->xmlFileUri;
+
         if ($this->options["utf8Filter"]) {
             $uri = "php://filter/read=xmlutf8/resource=" . $uri;
         }
-        if (!$this->reader->open($uri, $this->options["encoding"],
-            $this->options["readerOptions"])
+
+        if (!$this->reader
+            ->open(
+                $uri,
+                $this->options["encoding"],
+                $this->options["readerOptions"]
+            )
         ) {
             throw new \Exception("$this->xmlFileUri cannot be opened");
         }
