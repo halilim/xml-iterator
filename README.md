@@ -1,24 +1,26 @@
-xml-iterator [![Build Status](https://travis-ci.org/halilim/xml-iterator.png)](https://travis-ci.org/halilim/xml-iterator)
+xml-iterator 
 ============
+
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
 
 XML Reader to array/object iterator with low memory usage (basically a Space–time tradeoff) and an acceptable level of ease of use.
 Mostly useful for importing sequential data from external API's.
 
 
-Installation (Composer)
------------------------
+## Installation (Composer)
 
-Add this to your composer.json:
-```json
-{
-    "require": {
-        "halilim/xml-iterator": "dev-master"
-    }
-}
+```bash
+$ composer require "halilim/xml-iterator"
 ```
 
-Usage
------
+
+## Usage
+
 ```php
 use XmlIterator\XmlIterator;
 $it = new XmlIterator("http://api.example.com/products.xml", "product");
@@ -84,21 +86,34 @@ Example output:
 )
 ```
 
-Contributing
-------------
-1. Fork
-2. Clone your fork
-3. Create a topic branch
-4. Make changes
-5. Add tests if possible
-6. Make sure all tests are successful
-7. If you are adding new functionality, document it in README.md
-8. Do not change the version number
-9. If necessary, rebase your commits into logical chunks, without errors
-10. If there are changes in the upstream, rebase against it
-11. Push your branch
-12. Send a pull request for your branch
 
-Notes
------
-* Tries to use [semantic versioning](http://semver.org/) whenever possible.
+## Testing
+
+``` bash
+$ composer test
+```
+
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[ico-version]: https://img.shields.io/packagist/v/halilim/xml-iterator.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/halilim/xml-iterator/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/halilim/xml-iterator.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/halilim/xml-iterator.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/halilim/xml-iterator.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/halilim/xml-iterator
+[link-travis]: https://travis-ci.org/halilim/xml-iterator
+[link-scrutinizer]: https://scrutinizer-ci.com/g/halilim/xml-iterator/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/halilim/xml-iterator
+[link-downloads]: https://packagist.org/packages/halilim/xml-iterator
+[link-author]: https://github.com/halilim
+[link-contributors]: ../../contributors

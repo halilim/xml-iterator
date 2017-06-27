@@ -7,18 +7,20 @@
  * Use with very large files (50 MB+) and watch the memory usage.
  */
 
-$url         = $argv[1];
+require 'vendor/autoload.php';
+
+$url = $argv[1];
 $elemTagName = $argv[2];
 
 $startTime = microtime(true);
-$ct        = 0;
-$method    = "";
+$ct = 0;
+$method = "";
 
 switch ($argv[3]) {
     case 1:
         // V1
         $method = "XmlIterator\\XmlIterator";
-        require_once "XmlIterator/XmlIterator.php";
+
         $it = new XmlIterator\XmlIterator($url, $elemTagName);
         foreach ($it as $k => $v) {
             $ct++;
@@ -29,9 +31,13 @@ switch ($argv[3]) {
     case 2:
         // V2 the memory aggressor
         $method = "SPL SimpleXMLIterator";
-        require_once "XmlIterator/Utf8Filter.php";
+
         stream_filter_register('xmlutf8', "XmlIterator\\Utf8Filter");
-        $it = new SimpleXMLIterator("php://filter/read=xmlutf8/resource=" . $url, LIBXML_NOENT | LIBXML_NOCDATA, true);
+        $it = new SimpleXMLIterator(
+            "php://filter/read=xmlutf8/resource=" . $url,
+            LIBXML_NOENT | LIBXML_NOCDATA, true
+        );
+
         foreach ($it->{$elemTagName} as $v) {
             $ct++;
 //            echo var_export($v, true) . "\n\n";
@@ -43,12 +49,8 @@ switch ($argv[3]) {
         break;
 }
 
-
 $time = microtime(true) - $startTime;
 echo "\n";
 echo "method      : $method\n";
 echo "elem count  : $ct\n";
 echo "time passed : $time s\n";
-
-// Useless since the memory used by libxml libraries is not reported
-//echo "peak memory : " . (memory_get_peak_usage(true) / pow(2, 20)) . " MiB\n";

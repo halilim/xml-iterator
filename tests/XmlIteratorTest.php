@@ -1,10 +1,6 @@
 <?php
 
-namespace XmlIterator\Tests;
-
-require_once __DIR__ . "/../XmlIterator.php";
-
-use XmlIterator;
+namespace XmlIterator;
 
 class XmlIteratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,12 +8,7 @@ class XmlIteratorTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->iterator = new XmlIterator\XmlIterator(__DIR__ . "/Fixtures/test.xml", "product");
-    }
-
-    protected function tearDown()
-    {
-        $this->iterator = null;
+        $this->iterator = new XmlIterator(__DIR__ . "/Fixtures/test.xml", "product");
     }
 
     public function testXmlIterator()
