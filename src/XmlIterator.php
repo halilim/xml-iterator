@@ -2,7 +2,9 @@
 
 namespace XmlIterator;
 
-class XmlIterator implements \Iterator
+use Iterator;
+
+class XmlIterator implements Iterator
 {
     /**
      * @var int
@@ -26,26 +28,26 @@ class XmlIterator implements \Iterator
         /**
          * @var string Encoding of source file
          */
-        "encoding"      => null, //
+        "encoding"      => null,
 
         /**
          * @var null See __construct() for the default
          */
-        "readerOptions" => null, //
+        "readerOptions" => null,
 
         /**
          * @var bool Activate UTF8 filter agains invalid (e.g. "out of allowed range") characters?
          *
          * Disable for performance gain if you know that the xml is clean of bad characters.
          */
-        "utf8Filter"    => true, //
+        "utf8Filter"    => true,
 
         /**
          * @var bool Return current element as an array for ease of use?
          *
          * Disable for performance gain. Bu you need to do (string)$current->something for each sub-element.
          */
-        "asArray"       => true, //
+        "asArray"       => true,
     );
 
     /**
@@ -61,21 +63,24 @@ class XmlIterator implements \Iterator
     /**
      * @param string $xmlFileUri
      * @param string $delimiterTagName
-     * @param array  $options
+     * @param array $options
      *
      * @throws \Exception
      */
-    function __construct($xmlFileUri, $delimiterTagName, $options = array())
-    {
-        $this->xmlFileUri       = $xmlFileUri;
+    public function __construct(
+        $xmlFileUri,
+        $delimiterTagName,
+        $options = array()
+    ) {
+        $this->xmlFileUri = $xmlFileUri;
         $this->delimiterTagName = $delimiterTagName;
 
         // work-around for non-scalar default value
         $this->options["readerOptions"] = \XMLReader::VALIDATE | \XMLReader::SUBST_ENTITIES | LIBXML_NOCDATA;
-        $this->options                  = array_replace_recursive($this->options, $options);
+        $this->options = array_replace_recursive($this->options, $options);
 
         $this->reader = new \XMLReader();
-        $this->doc    = new \DOMDocument();
+        $this->doc = new \DOMDocument();
 
         if ($this->options["utf8Filter"]) {
             require_once "Utf8Filter.php";
@@ -153,10 +158,18 @@ class XmlIterator implements \Iterator
     public function rewind()
     {
         $uri = $this->xmlFileUri;
+
         if ($this->options["utf8Filter"]) {
             $uri = "php://filter/read=xmlutf8/resource=" . $uri;
         }
-        if (!$this->reader->open($uri, $this->options["encoding"], $this->options["readerOptions"])) {
+
+        if (!$this->reader
+            ->open(
+                $uri,
+                $this->options["encoding"],
+                $this->options["readerOptions"]
+            )
+        ) {
             throw new \Exception("$this->xmlFileUri cannot be opened");
         }
 

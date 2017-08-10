@@ -2,7 +2,9 @@
 
 namespace XmlIterator;
 
-class Utf8Filter extends \php_user_filter
+use php_user_filter;
+
+class Utf8Filter extends php_user_filter
 {
     /**
      * @param $in
@@ -10,11 +12,11 @@ class Utf8Filter extends \php_user_filter
      * @param $consumed
      * @param $closing
      *
-     * @return int|void
+     * @return int
      *
      * @link http://stackoverflow.com/a/3466609/372654
      */
-    function filter($in, $out, &$consumed, $closing)
+    public function filter($in, $out, &$consumed, $closing)
     {
         while ($bucket = stream_bucket_make_writeable($in)) {
             $bucket->data = preg_replace(
