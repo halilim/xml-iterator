@@ -2,7 +2,7 @@ xml-iterator
 ============
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
+[![Software License][ico-license]](LICENSE)
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
@@ -96,12 +96,17 @@ $ composer test
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+
+
+## List of Contributors
+
+We thank all [our contributors](https://github.com/halilim/xml-iterator/graphs/contributors) for their contributions.
 
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/halilim/xml-iterator.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
@@ -115,5 +120,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-scrutinizer]: https://scrutinizer-ci.com/g/halilim/xml-iterator/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/halilim/xml-iterator
 [link-downloads]: https://packagist.org/packages/halilim/xml-iterator
-[link-author]: https://github.com/halilim
-[link-contributors]: ../../contributors
