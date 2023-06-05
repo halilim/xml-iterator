@@ -16,6 +16,7 @@ class Utf8Filter extends php_user_filter
      *
      * @link http://stackoverflow.com/a/3466609/372654
      */
+    #[\ReturnTypeWillChange]
     public function filter($in, $out, &$consumed, $closing)
     {
         while ($bucket = stream_bucket_make_writeable($in)) {

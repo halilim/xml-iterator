@@ -94,6 +94,7 @@ class XmlIterator implements Iterator
      * @link http://stackoverflow.com/a/1835324/372654
      * @return false|array|\SimpleXMLElement
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $node = $this->reader->expand();
@@ -121,6 +122,7 @@ class XmlIterator implements Iterator
      * @link http://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         if ($this->reader->next($this->delimiterTagName)) {
@@ -133,6 +135,7 @@ class XmlIterator implements Iterator
      * @link http://php.net/manual/en/iterator.key.php
      * @return int scalar on success, or null on failure.
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
@@ -144,6 +147,7 @@ class XmlIterator implements Iterator
      * @return boolean The return value will be casted to boolean and then evaluated.
      *       Returns true on success or false on failure.
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return $this->reader->name === $this->delimiterTagName;
@@ -155,6 +159,7 @@ class XmlIterator implements Iterator
      * @throws \Exception
      * @return void Any returned value is ignored.
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $uri = $this->xmlFileUri;
