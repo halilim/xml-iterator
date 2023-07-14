@@ -1,5 +1,5 @@
 {
-  "name": "halilim/xml-iterator",
+  "name": "glsv/xml-iterator",
   "type": "library",
   "description": "XML Reader to simplexml/array iterator with low memory usage and an acceptable level of ease of use.",
   "keywords": [
