@@ -1,17 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace XmlIterator;
 
-class XmlIteratorTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class XmlIteratorTest extends TestCase
 {
     protected $iterator;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->iterator = new XmlIterator(__DIR__ . "/Fixtures/test.xml", "product");
     }
 
-    public function testXmlIterator()
+    public function testXmlIterator(): void
     {
         $this->assertInstanceOf("\\Iterator", $this->iterator, "XmlIterator is an Iterator");
 
@@ -20,10 +24,9 @@ class XmlIteratorTest extends \PHPUnit_Framework_TestCase
             $ct++;
             switch ($ct) {
                 case 1:
-                    $this->assertInternalType("array", $node, "can convert nodes to array");
+                    $this->assertIsArray($node, "can convert nodes to array");
                     $this->assertEquals("Lorem", $node["title"], "can strip invalid characters");
-                    $this->assertInternalType(
-                        "array",
+                    $this->assertIsArray(
                         $node["images"],
                         "converts deep objects to nested arrays"
                     );

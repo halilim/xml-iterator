@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace XmlIterator;
 
 use php_user_filter;
@@ -16,7 +18,7 @@ class Utf8Filter extends php_user_filter
      *
      * @link http://stackoverflow.com/a/3466609/372654
      */
-    public function filter($in, $out, &$consumed, $closing)
+    public function filter($in, $out, &$consumed, $closing): int
     {
         while ($bucket = stream_bucket_make_writeable($in)) {
             $bucket->data = preg_replace(
