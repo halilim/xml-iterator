@@ -3,7 +3,7 @@ xml-iterator
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
-[![Build Status][ico-travis]][link-travis]
+[![Build Status][ico-github]][link-github]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -110,13 +110,13 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/halilim/xml-iterator.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/halilim/xml-iterator/master.svg?style=flat-square
+[ico-github]: https://github.com/halilim/xml-iterator/actions/workflows/ci.yml/badge.svg
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/halilim/xml-iterator.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/halilim/xml-iterator.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/halilim/xml-iterator.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/halilim/xml-iterator
-[link-travis]: https://travis-ci.org/halilim/xml-iterator
+[link-github]: https://github.com/halilim/xml-iterator/actions/workflows/ci.yml
 [link-scrutinizer]: https://scrutinizer-ci.com/g/halilim/xml-iterator/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/halilim/xml-iterator
 [link-downloads]: https://packagist.org/packages/halilim/xml-iterator

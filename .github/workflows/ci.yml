@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-test:
+    name: PHP ${{ matrix.php-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ["8.2", "8.3", "8.4", "8.5"]
+
+    steps:
+    - uses: actions/checkout@v6
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+
+    - name: Check PHP verison
+      run: |
+        php_version=$(php -r 'echo PHP_VERSION;')
+        echo "PHP version: $php_version"
+        [[ $php_version == ${{ matrix.php-version }}* ]] || exit 1
+
+    - uses: actions/cache@v5
+      with:
+        path: vendor
+        key: ${{ runner.os }}-composer
+
+    - name: Install dependencies
+      run: composer install --no-progress
+
+    - name: Check style
+      run: composer run-script check-style
+
+    - name: Run test suite
+      run: composer run-script test

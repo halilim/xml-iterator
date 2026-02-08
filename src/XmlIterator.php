@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace XmlIterator;
 
 use Iterator;
@@ -94,7 +96,7 @@ class XmlIterator implements Iterator
      * @link http://stackoverflow.com/a/1835324/372654
      * @return false|array|\SimpleXMLElement
      */
-    public function current()
+    public function current(): mixed
     {
         $node = $this->reader->expand();
         if ($node === false) {
@@ -121,7 +123,7 @@ class XmlIterator implements Iterator
      * @link http://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
      */
-    public function next()
+    public function next(): void
     {
         if ($this->reader->next($this->delimiterTagName)) {
             ++$this->position;
@@ -133,7 +135,7 @@ class XmlIterator implements Iterator
      * @link http://php.net/manual/en/iterator.key.php
      * @return int scalar on success, or null on failure.
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
@@ -144,7 +146,7 @@ class XmlIterator implements Iterator
      * @return boolean The return value will be casted to boolean and then evaluated.
      *       Returns true on success or false on failure.
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->reader->name === $this->delimiterTagName;
     }
@@ -155,7 +157,7 @@ class XmlIterator implements Iterator
      * @throws \Exception
      * @return void Any returned value is ignored.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $uri = $this->xmlFileUri;
 
@@ -168,8 +170,7 @@ class XmlIterator implements Iterator
                 $uri,
                 $this->options["encoding"],
                 $this->options["readerOptions"]
-            )
-        ) {
+            )) {
             throw new \Exception("$this->xmlFileUri cannot be opened");
         }
 
