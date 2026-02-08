@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Lint and Test
 
 on:
   push:
@@ -11,7 +11,6 @@ permissions:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,23 +18,27 @@ jobs:
         php-version: ["8.2", "8.3", "8.4", "8.5"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+    - uses: actions/cache@v5
+      with:
+        path: vendor
+        key: ${{ runner.os }}-composer
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
+    # TODO: https://github.com/php-actions/composer/issues/120
+    - name: Fix git issue for php-actions/composer
+      run: |
+        git config --global --add safe.directory /app
+
+    - uses: php-actions/composer@v6
       with:
         php_version: ${{ matrix.php-version }}
-        path: vendor
-        key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-${{ matrix.php-version }}
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+    - name: Check PHP verison
+      run: |
+        php_version=$(php -r 'echo PHP_VERSION;')
+        echo "PHP version: $php_version"
+        [[ $php_version == ${{ matrix.php-version }}* ]] || exit 1
 
     - name: Check style
       run: composer run-script check-style

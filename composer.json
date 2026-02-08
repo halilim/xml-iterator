@@ -17,14 +17,14 @@
     }
   ],
   "require": {
-    "php": ">=5.3",
+    "php": ">=8.2",
     "ext-dom": "*",
     "ext-SimpleXML": "*",
     "ext-SPL": "*",
     "ext-xmlreader": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~13.0",
+    "phpunit/phpunit": "~11.0",
     "squizlabs/php_codesniffer": "~4.0"
   },
   "autoload": {
