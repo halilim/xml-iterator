@@ -1,4 +1,4 @@
-name: Lint and Test
+name: Build
 
 on:
   push:
@@ -10,7 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  lint-test:
+    name: PHP ${{ matrix.php-version }}
     runs-on: ubuntu-latest
 
     strategy:
